@@ -8,19 +8,23 @@
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
     <!-- Materialize CSS -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
-</head>
 
-<body class='blue-grey lighten-4 '>
     <!-- Materialize JavaScript -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
     <!-- division2 world timer JavaScript-->
     <script src="./division2_world_timer.js"></script>
+</head>
 
-    <h1>Division 2 world time</h1>
+<body class='blue-grey lighten-4 '>
+    <nav>
+        <div class="navbar-fixed blue-grey">
+            <h4>Division 2 world time</h1>
+        </div>
+    </nav>
 
     <table class="centered">
         <tbody>
-            <tr>
+            <tr style='display: none;'>
                 <th>Current Time (JST)</th>
                 <td><span id="t" /></td>
             </tr>
@@ -36,7 +40,6 @@
             </tr>
         </tbody>
     </table>
-    <h2>Remaining until next time</h2>
     <table class="striped highlight centered">
         <tbody>
             <tr>
@@ -138,7 +141,14 @@
         </tbody>
     </table>
     </p>
-
+    <footer class="page-footer blue-grey">
+        <div class="footer-copyright">
+            <div class="container">
+                <a class="grey-text text-lighten-4 right" href="https://twitter.com/hi_dep_g"
+                    target="_blank">@hi_dep_g</a>
+            </div>
+        </div>
+    </footer>
 </body>
 
 </html>
