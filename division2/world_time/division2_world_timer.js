@@ -32,11 +32,25 @@ function getRemainTime(sec, to_hour) {
 
     result = ('0' + h).slice(-2) + ':' + ('0' + m).slice(-2) + ':' + ('0' + s).slice(-2);
 
-    if (bf_remain_sec > remain_sec) {
-        result = '<span class="next">' + result + '</span>';
-    }
-
     return result;
+}
+
+function getNextTime(sec, to_hour) {
+    bf_idx = ((to_hour - 1 + 24) % 24) * 60; // bf hour idx
+    idx = to_hour * 60; // cur hour idx
+
+    bf_remain_sec = ((m_sec[bf_idx] + 1 - sec) + d1_sec) % d1_sec;
+    remain_sec = (m_sec[idx] + 1 - sec + d1_sec) % d1_sec;
+
+    let nextTime = new Date();
+    nextTime.setSeconds(nextTime.getSeconds() + remain_sec);
+
+    h = nextTime.getHours();
+    m = nextTime.getMinutes();
+
+    result = ('0' + h).slice(-2) + ':' + ('0' + m).slice(-2);
+
+    return result + ' (JST)';
 }
 
 function showClock1() {
@@ -53,29 +67,10 @@ function showClock1() {
     document.getElementById('ts').innerHTML = cur_sec;
     document.getElementById('t2').innerHTML = getWorldTime(cur_sec);
 
-    document.getElementById('t00').innerHTML = getRemainTime(cur_sec, 0)
-    document.getElementById('t01').innerHTML = getRemainTime(cur_sec, 1)
-    document.getElementById('t02').innerHTML = getRemainTime(cur_sec, 2)
-    document.getElementById('t03').innerHTML = getRemainTime(cur_sec, 3)
-    document.getElementById('t04').innerHTML = getRemainTime(cur_sec, 4)
-    document.getElementById('t05').innerHTML = getRemainTime(cur_sec, 5)
-    document.getElementById('t06').innerHTML = getRemainTime(cur_sec, 6)
-    document.getElementById('t07').innerHTML = getRemainTime(cur_sec, 7)
-    document.getElementById('t08').innerHTML = getRemainTime(cur_sec, 8)
-    document.getElementById('t09').innerHTML = getRemainTime(cur_sec, 9)
-    document.getElementById('t10').innerHTML = getRemainTime(cur_sec, 10)
-    document.getElementById('t11').innerHTML = getRemainTime(cur_sec, 11)
-    document.getElementById('t12').innerHTML = getRemainTime(cur_sec, 12)
-    document.getElementById('t13').innerHTML = getRemainTime(cur_sec, 13)
-    document.getElementById('t14').innerHTML = getRemainTime(cur_sec, 14)
-    document.getElementById('t15').innerHTML = getRemainTime(cur_sec, 15)
-    document.getElementById('t16').innerHTML = getRemainTime(cur_sec, 16)
-    document.getElementById('t17').innerHTML = getRemainTime(cur_sec, 17)
-    document.getElementById('t18').innerHTML = getRemainTime(cur_sec, 18)
-    document.getElementById('t19').innerHTML = getRemainTime(cur_sec, 19)
-    document.getElementById('t20').innerHTML = getRemainTime(cur_sec, 20)
-    document.getElementById('t21').innerHTML = getRemainTime(cur_sec, 21)
-    document.getElementById('t22').innerHTML = getRemainTime(cur_sec, 22)
-    document.getElementById('t23').innerHTML = getRemainTime(cur_sec, 23)
+    for (i=0; i<24; i++){
+        let id = String(i).padStart(2, '0');
+        document.getElementById('t' + id).innerHTML = getRemainTime(cur_sec, i)
+        document.getElementById('s' + id).innerHTML = getNextTime(cur_sec, i)
+    }
 }
 setInterval('showClock1()', 1000);
