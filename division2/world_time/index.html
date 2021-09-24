@@ -8,20 +8,39 @@
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
     <!-- Materialize CSS -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
+</head>
 
+<body class='blue-grey lighten-4 '>
+
+    <!-- jQuery-->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
     <!-- Materialize JavaScript -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
     <!-- division2 world timer JavaScript-->
     <script src="./division2_world_timer.js"></script>
-</head>
 
-<body class='blue-grey lighten-4 '>
     <nav>
-        <div class="navbar-fixed blue-grey">
-            <h4>Division 2 world time</h1>
+        <div class="nav-wrapper blue-grey">
+            <div class='brand-logo'>Division2 world time</div>
+            <ul class="right hide-on-med-and-down">
+                <!-- Dropdown Trigger -->
+                <li><a class='dropdown-trigger ' href='#' data-target='dropdown1'>Link</a></li>
+            </ul>
         </div>
     </nav>
+    <!-- Dropdown Structure -->
+    <ul id='dropdown1' class='dropdown-content'>
+        <li><a href="https://drive.google.com/file/d/1RSwklB6dtqT9gNDbL6gX3DRP5LZj5y-8/view?usp=sharing" target="_blank">装備</a></li>
+        <li><a href="https://docs.google.com/spreadsheets/d/1CrHp5C2KkknawkihcWvwxo-SaEdaoS1FW2ZFr0L1uA0/edit?usp=sharing" target="_blank">店売り情報</a></li>
+    </ul>
 
+    <script>
+        $(document).ready(function () {
+            $('.dropdown-trigger').dropdown({
+                constrainWidth: false,
+            });
+        });
+    </script>
     <table class="centered">
         <tbody>
             <tr style='display: none;'>
